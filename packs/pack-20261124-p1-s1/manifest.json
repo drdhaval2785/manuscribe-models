@@ -185,7 +185,7 @@
   "pages": 2919
  },
  "software": {
-  "devanagari-manuscript-ocr": "0.11.0",
+  "devanagari-manuscript-ocr": "0.12.0",
   "repository": "https://github.com/drdhaval2785/devanagari-manuscript-ocr"
  },
  "script": "sa-Deva"

@@ -1,8 +1,8 @@
 {
  "schema": 1,
- "updated": "2026-11-24T11:46:40",
+ "updated": "2026-11-24T13:44:33",
  "software": {
-  "devanagari-manuscript-ocr": "0.11.0",
+  "devanagari-manuscript-ocr": "0.12.0",
   "repository": "https://github.com/drdhaval2785/devanagari-manuscript-ocr"
  },
  "latest": "pack-20261124-p1-s1",
