@@ -49,3 +49,5 @@ Run `full_e10_s1`, trained on Pramāṇa's open release: Sanskrit Wikisource (CC
 ## Consent
 
 No contributed data: the segmenter and the recogniser learned from the developer's own manuscripts only.
+
+Language and script: sa-Deva only. Lines and pages of another language or script are never mixed into these models' training.

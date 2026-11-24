@@ -3,8 +3,13 @@
  "inbox": "drdhaval2785/manuscribe-contributions",
  "email": "drdhaval2785@gmail.com",
  "wordings": [
-  "1"
+  "1",
+  "2"
  ],
+ "sides": [
+  "2"
+ ],
+ "script": "sa-Deva",
  "key": {
   "id": "fed7ed31e9afc8c5",
   "alg": "RSA-OAEP-256+A256GCM",

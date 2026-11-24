@@ -68,6 +68,7 @@
      "p90": 756,
      "pages": 2919
     },
+    "contributions": [],
     "licence": "CC BY-SA 4.0",
     "consent": "the developer's own manuscripts only; no contributed data"
    }
@@ -186,5 +187,6 @@
  "software": {
   "devanagari-manuscript-ocr": "0.11.0",
   "repository": "https://github.com/drdhaval2785/devanagari-manuscript-ocr"
- }
+ },
+ "script": "sa-Deva"
 }
