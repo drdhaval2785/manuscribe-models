@@ -1,0 +1,59 @@
+{
+ "schema": 1,
+ "updated": "2026-11-24T05:42:04",
+ "latest": "pack-20261124-p1-s1",
+ "packs": [
+  {
+   "id": "pack-20261124-p1-s1",
+   "manifest": "packs/pack-20261124-p1-s1/manifest.json",
+   "created": "2026-11-24T05:39:04",
+   "pipeline_version": 1,
+   "spacer_version": 1,
+   "needs": {
+    "runtime": "onnxruntime-web-1.31.1",
+    "pipeline_version": 1,
+    "spacer_version": 1
+   },
+   "bytes": 28883703,
+   "models": {
+    "segmenter": "tseg1",
+    "recogniser": "ft4",
+    "spacer": "full_e10_s1"
+   },
+   "licence": "CC BY-SA 4.0"
+  }
+ ],
+ "runtimes": {
+  "onnxruntime-web-1.31.1": {
+   "path": "runtime/onnxruntime-web-1.31.1/",
+   "version": "1.31.1",
+   "licence": "MIT",
+   "variants": {
+    "webgpu": {
+     "js": {
+      "file": "ort.webgpu.bundle.min.mjs",
+      "sha256": "c90275ffcd0e74e8929f527840ce9339399bfd45f11a74887e4b81a893907b70",
+      "bytes": 122491
+     },
+     "wasm": {
+      "file": "ort-wasm-simd-threaded.asyncify.wasm",
+      "sha256": "ca319e9539cd0f1e291cf56074760121eaf39650f5dbf84b6e52c07f4b2944ec",
+      "bytes": 28747738
+     }
+    },
+    "wasm": {
+     "js": {
+      "file": "ort.wasm.bundle.min.mjs",
+      "sha256": "51bd7168175767324ab0acfcfc4ca94a096a3826e3ebac9ccc4f195eb865f8dd",
+      "bytes": 77024
+     },
+     "wasm": {
+      "file": "ort-wasm-simd-threaded.wasm",
+      "sha256": "4b884c203b0fa48d057be3332c65513ff85aa3c5bddd6946acc0fab7ecda001d",
+      "bytes": 14848852
+     }
+    }
+   }
+  }
+ }
+}

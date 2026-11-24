@@ -1,0 +1,185 @@
+{
+ "pack": "pack-20261124-p1-s1",
+ "created": "2026-11-24T05:39:04",
+ "pipeline_version": 1,
+ "spacer_version": 1,
+ "runtime": "ONNX Runtime (Web 1.31.1 measured); opset 17",
+ "models": {
+  "segmenter": {
+   "file": "segmenter.onnx",
+   "source": "data/tseg/models/tseg1/best.pt",
+   "max_diff_from_pytorch": 9.5367431640625e-06,
+   "input": {
+    "name": "x",
+    "dtype": "float32",
+    "shape": [
+     1,
+     1,
+     640,
+     "w"
+    ],
+    "meaning": "the page in grey, ink high (1 - grey/255), scaled to height 640 with the resize of pipeline.json, padded with 0 to a width that is a multiple of 16"
+   },
+   "output": {
+    "name": "y",
+    "dtype": "float32",
+    "shape": [
+     1,
+     3,
+     640,
+     "w"
+    ],
+    "meaning": "channel 0: baseline logit; 1 and 2: distance up and down from the baseline, divided by 64.0"
+   },
+   "sha256": "8b2508db346acd49ad07328b5d4f24531863ddee966ca0f2ddb2759acb86e0e5",
+   "bytes": 7548882,
+   "licence": "CC BY-SA 4.0",
+   "card": {
+    "run": "tseg1",
+    "log": "[tseg] run tseg1: train 2929 pages, val 129, test 209; 237 pages left out because Kraken's segmentation of them is doubtful (data/tseg/flagged_pages.tsv); device mps",
+    "manuscripts": {
+     "AKGM_0025383": 189,
+     "LDII_15152": 42,
+     "LDII_17963": 214,
+     "LDII_1806": 148,
+     "LDII_19634": 321,
+     "LDII_22995": 24,
+     "LDII_24075": 22,
+     "LDII_24083": 25,
+     "LDII_24140": 64,
+     "LDII_3746": 182,
+     "LDII_38386": 130,
+     "LDII_4278": 116,
+     "LDII_45071": 116,
+     "LDII_45364": 121,
+     "LDII_6487": 76,
+     "LDII_7105": 226,
+     "LDII_80136": 56,
+     "LDII_82320": 139,
+     "LDII_82328": 180,
+     "LDII_82668": 123,
+     "LDII_85885": 258,
+     "LDII_9851": 147
+    },
+    "note": "the training split as it stands at this pack's build (tseg.page_list); the run's own log gives its counts",
+    "page_height": {
+     "median": 685,
+     "p10": 608,
+     "p90": 756,
+     "pages": 2919
+    },
+    "licence": "CC BY-SA 4.0",
+    "consent": "the developer's own manuscripts only; no contributed data"
+   }
+  },
+  "recogniser": {
+   "file": "recogniser.onnx",
+   "source": "data/LDII_19634/models/ft4/best.pt",
+   "max_diff_from_pytorch": 9.059906005859375e-05,
+   "pass": 23,
+   "val_cer": 1.4245014245014245,
+   "chars": "recogniser_chars.json",
+   "classes": 82,
+   "input": {
+    "name": "x",
+    "dtype": "float32",
+    "shape": [
+     1,
+     1,
+     48,
+     "w"
+    ],
+    "meaning": "a line image in grey, ink high, scaled to height 48 (width at least 8)"
+   },
+   "output": {
+    "name": "y",
+    "dtype": "float32",
+    "shape": [
+     1,
+     "t",
+     82
+    ],
+    "meaning": "logits per column (one for every 4 input columns); class 0 is the CTC blank, class k + 1 is chars[k]"
+   },
+   "sha256": "5bff18fe25b8573aa96d1850d3c294822293be3b04c1baa7ba785d15e552e334",
+   "bytes": 7976637,
+   "licence": "CC BY-SA 4.0",
+   "card": {
+    "lineage": [
+     {
+      "run": "ft4",
+      "manuscript": "LDII_19634",
+      "lines": 445
+     },
+     {
+      "run": "run3",
+      "manuscript": "LDII_85885",
+      "lines": 4218
+     }
+    ],
+    "licence": "CC BY-SA 4.0",
+    "consent": "the developer's own manuscripts only; no contributed data"
+   }
+  },
+  "spacer": {
+   "file": "spacer.onnx",
+   "source": "sanskrit_spacer/runs/full_e10_s1/best.pt",
+   "max_diff_from_pytorch": 1.519918441772461e-05,
+   "threshold": 0.45,
+   "max_len": 256,
+   "input": {
+    "name": "x",
+    "dtype": "int64",
+    "shape": [
+     "n",
+     "L"
+    ],
+    "meaning": "letter ids: symbol i of the alphabet in spacer.json is i + 2, 1 unknown; L from 1 to 256, no padding needed (a batch of windows of different lengths is padded with 0 to the longest: padding is masked)"
+   },
+   "output": {
+    "name": "y",
+    "dtype": "float32",
+    "shape": [
+     "n",
+     "L"
+    ],
+    "meaning": "logit of a word space after each letter; those of any padding are ignored"
+   },
+   "sha256": "d46f56ae7eda84f36ad3656d8b5571421afcbdf0ab20dd152fe25cf7cfaa5dc6",
+   "bytes": 13352928,
+   "licence": "CC BY-SA 4.0",
+   "card": {
+    "texts": "Pramāṇa's open release: Sanskrit Wikisource (CC BY-SA), SARIT (CC BY-SA), Ambuda (CC0)",
+    "run": "full_e10_s1",
+    "licence": "CC BY-SA 4.0",
+    "consent": "openly licensed texts; no manuscript images"
+   }
+  }
+ },
+ "files": {
+  "pipeline.json": {
+   "sha256": "46fec7cfdba5eaa2f7544607139b4fba1a95a4c67e3e88722504598ad5e3cb89",
+   "bytes": 1062
+  },
+  "spacer.json": {
+   "sha256": "dfc05a52d5d711c491c50fbce5e35cbf5a67314c724772b9438af286dcc93991",
+   "bytes": 3628
+  },
+  "recogniser_chars.json": {
+   "sha256": "dade2ec50b5f9d2573f86aa4470b3c3609505852085c4802c210c6a07294ab30",
+   "bytes": 566
+  }
+ },
+ "licence": "weights CC BY-SA 4.0; training data: the developer's own manuscripts and, for the spacer, CC BY-SA/CC0 texts (Pramāṇa)",
+ "needs": {
+  "runtime": "onnxruntime-web-1.31.1",
+  "pipeline_version": 1,
+  "spacer_version": 1
+ },
+ "page_height": {
+  "median": 685,
+  "p10": 608,
+  "p90": 756,
+  "pages": 2919
+ }
+}
