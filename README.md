@@ -14,9 +14,9 @@ browser; recognition then runs on the device, offline, and nothing is sent anywh
   issue in the inbox repository it names), and the public key it seals them to, so that only the maintainer can open
   them.
 
-The packs are made by `manuscript_ocr` (`python -m msocr.export_onnx`, then `python -m msocr.site`); its reference
-pipeline in Python and Manuscribe's JavaScript are held to give the same output by stage fixtures. Made with
-manuscript_ocr 0.11.0, for Manuscribe 0.11.0.
+The packs are made by [devanagari-manuscript-ocr](https://github.com/drdhaval2785/devanagari-manuscript-ocr) (`python -m msocr.export_onnx`, then
+`python -m msocr.site`); its reference pipeline in Python and Manuscribe's JavaScript are held to give the same output
+by stage fixtures. Made with devanagari-manuscript-ocr 0.11.0, for Manuscribe 0.11.0.
 
 Licences: the models' weights are under CC BY-SA 4.0 (see LICENSE.md); ONNX Runtime Web under MIT
 (runtime/*/LICENSE).
