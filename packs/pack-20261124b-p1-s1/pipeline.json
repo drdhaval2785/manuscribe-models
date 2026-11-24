@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "about": "Parameters shared by the Python reference pipeline (msocr) and its JavaScript port (Manuscribe). Change a value here, never in either codebase, and bump version: models and fixtures name the version they were made with.",
+  "resize": "every resize is PIL's Image.resize with BILINEAR on an 8-bit grey image (a triangle filter whose support widens with the scale when shrinking); the JavaScript port implements the same",
+  "segmenter": {
+    "img_h": 640,
+    "pad_to": 16,
+    "norm": 64.0,
+    "threshold": 0.5,
+    "min_piece": 10,
+    "step": 6,
+    "smooth_baseline": 9,
+    "smooth_reach": 15,
+    "simplify": 1.5
+  },
+  "rows": {
+    "above": 0.9,
+    "below": 0.3,
+    "commentary": {
+      "weights": [-14.26, -23.49, -1.57, 0.94, 0.69, -1.36, 1.12, -0.98],
+      "bias": 32.59,
+      "features": ["density", "stem", "pen", "gap_in", "gap_out", "position", "filled", "no_hand"],
+      "clear": 0.9,
+      "some": 0.8
+    }
+  },
+  "cutter": {
+    "smooth": 8.0
+  },
+  "recogniser": {
+    "height": 48,
+    "stride": 4
+  }
+}

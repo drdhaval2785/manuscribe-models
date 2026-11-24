@@ -1,11 +1,11 @@
 {
  "schema": 1,
- "updated": "2026-11-24T14:42:37",
+ "updated": "2026-11-24T15:07:22",
  "software": {
-  "devanagari-manuscript-ocr": "0.12.1",
+  "devanagari-manuscript-ocr": "0.13.0",
   "repository": "https://github.com/drdhaval2785/devanagari-manuscript-ocr"
  },
- "latest": "pack-20261124-p1-s1",
+ "latest": "pack-20261124b-p1-s1",
  "packs": [
   {
    "id": "pack-20261124-p1-s1",
@@ -22,6 +22,25 @@
    "models": {
     "segmenter": "tseg1",
     "recogniser": "ft4",
+    "spacer": "full_e10_s1"
+   },
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "id": "pack-20261124b-p1-s1",
+   "manifest": "packs/pack-20261124b-p1-s1/manifest.json",
+   "created": "2026-11-24T15:05:01",
+   "pipeline_version": 1,
+   "spacer_version": 1,
+   "needs": {
+    "runtime": "onnxruntime-web-1.31.1",
+    "pipeline_version": 1,
+    "spacer_version": 1
+   },
+   "bytes": 28886795,
+   "models": {
+    "segmenter": "tseg1",
+    "recogniser": "ft6",
     "spacer": "full_e10_s1"
    },
    "licence": "CC BY-SA 4.0"
