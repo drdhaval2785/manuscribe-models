@@ -1,6 +1,6 @@
 # pack-20261124b-p1-s1
 
-A recognition pack for Manuscribe: the line segmenter, the line recogniser and the word spacer, with the parameters of the stages between them (pipeline version 1, spacer version 1). Weights under CC BY-SA 4.0. Made with devanagari-manuscript-ocr 0.13.0 (https://github.com/drdhaval2785/devanagari-manuscript-ocr).
+A recognition pack for Manuscribe: the line segmenter, the line recogniser and the word spacer, with the parameters of the stages between them (pipeline version 1, spacer version 1). Weights under CC BY-SA 4.0. Made with devanagari-manuscript-ocr 0.13.1 (https://github.com/drdhaval2785/devanagari-manuscript-ocr).
 
 ## Segmenter
 
