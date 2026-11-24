@@ -181,5 +181,8 @@
   "p10": 608,
   "p90": 756,
   "pages": 2919
+ },
+ "software": {
+  "manuscript_ocr": "0.11.0"
  }
 }

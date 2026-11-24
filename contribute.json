@@ -1,0 +1,13 @@
+{
+ "schema": 1,
+ "inbox": "drdhaval2785/manuscribe-contributions",
+ "email": "drdhaval2785@gmail.com",
+ "wordings": [
+  "1"
+ ],
+ "key": {
+  "id": "fed7ed31e9afc8c5",
+  "alg": "RSA-OAEP-256+A256GCM",
+  "spki": "MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA3uZQZKIIvAzJHmmICJzxlAtAK/dYoaeh25EG9Mfs8cI1x1R8WIMEc5wWrQ/El9g5fWaqYqEAfI2cIiJlTdzyg7jzPJzhxKfeyOJbTecVj8KltAFGQka+KkciBndT1Lva5ndQ+y6avN5ctiQaQncOTbywARWtOiPQaXkmHWVGdzcNr4XcebcRU2rlbKR83WFjffRY15Gk27deQYI3UjnZTOSwR4rFe4krkLjfB011c45rbuEtT+KWrok6uEW6QnsbvqCh22VMdTxtYb+m1xUlvK/sz0X04oOczCKmtNOi3jBhZvrmJFchIAsWca+RA+1DJY6mMQTgsXysllb/KwF8J03lSDl5xGBE6yBDqB+uEMIIplPzNAhGk42HJtzrno4X4erEHDPAtU2puI63vuADWeqkXGUZkmAi+Slk16ydXggezyPbE4gg21W7OhQGXT2kGKRFgyECz0WFY1tlhIeAI798Q/Nt9ICexepr0gTTYVjYRWDECyiRkMUDFUEzJ/SLeMsDCJAmNMIH3iH6EuMpX5Q+6L0ZxpjtyGppY1R+6oJSF8xBqE4KDcrJvi8Z9xIVcaEyefQ7CMVtckX+NQoFvkAJ4XStaLd3vtI+fIPZEan4ecOkO2Gm9ukA09cIhz+ilSjP1EQPBxkN+MA+Lt3cs2g1/zUI01vaT2BFEw79tscCAwEAAQ=="
+ }
+}
