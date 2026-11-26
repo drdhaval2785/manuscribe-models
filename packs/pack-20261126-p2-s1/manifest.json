@@ -1,0 +1,321 @@
+{
+ "pack": "pack-20261126-p2-s1",
+ "created": "2026-11-26T20:18:05",
+ "pipeline_version": 2,
+ "spacer_version": 1,
+ "runtime": "ONNX Runtime (Web 1.31.1 measured); opset 17",
+ "models": {
+  "segmenter": {
+   "file": "segmenter.onnx",
+   "source": "data/tseg/models/tseg1/best.pt",
+   "max_diff_from_pytorch": 9.298324584960938e-06,
+   "input": {
+    "name": "x",
+    "dtype": "float32",
+    "shape": [
+     1,
+     1,
+     640,
+     "w"
+    ],
+    "meaning": "the page in grey, ink high (1 - grey/255), scaled to height 640 with the resize of pipeline.json, padded with 0 to a width that is a multiple of 16"
+   },
+   "output": {
+    "name": "y",
+    "dtype": "float32",
+    "shape": [
+     1,
+     3,
+     640,
+     "w"
+    ],
+    "meaning": "channel 0: baseline logit; 1 and 2: distance up and down from the baseline, divided by 64.0"
+   },
+   "sha256": "8b2508db346acd49ad07328b5d4f24531863ddee966ca0f2ddb2759acb86e0e5",
+   "bytes": 7548882,
+   "licence": "CC BY-SA 4.0",
+   "card": {
+    "run": "tseg1",
+    "log": "[tseg] run tseg1: train 2929 pages, val 129, test 209; 237 pages left out because Kraken's segmentation of them is doubtful (data/tseg/flagged_pages.tsv); device mps",
+    "manuscripts": {
+     "AKGM_0025383": 189,
+     "LDII_15152": 42,
+     "LDII_17963": 214,
+     "LDII_1806": 148,
+     "LDII_19634": 321,
+     "LDII_22995": 24,
+     "LDII_24075": 22,
+     "LDII_24083": 25,
+     "LDII_24140": 64,
+     "LDII_3746": 182,
+     "LDII_38386": 130,
+     "LDII_4278": 116,
+     "LDII_45071": 116,
+     "LDII_45364": 121,
+     "LDII_6487": 76,
+     "LDII_7105": 226,
+     "LDII_80136": 56,
+     "LDII_82320": 139,
+     "LDII_82328": 180,
+     "LDII_82668": 123,
+     "LDII_85885": 258,
+     "LDII_9851": 147
+    },
+    "note": "the training split as it stands at this pack's build (tseg.page_list); the run's own log gives its counts",
+    "page_height": {
+     "median": 685,
+     "p10": 608,
+     "p90": 756,
+     "pages": 2919
+    },
+    "contributions": [],
+    "licence": "CC BY-SA 4.0",
+    "consent": "the developer's own manuscripts only; no contributed data"
+   }
+  },
+  "recogniser": {
+   "file": "recogniser.onnx",
+   "source": "data/pool/models/pool2/best.pt",
+   "max_diff_from_pytorch": 2.3365020751953125e-05,
+   "pass": 11,
+   "val_cer": 3.7972751711062784,
+   "chars": "recogniser_chars.json",
+   "classes": 85,
+   "input": {
+    "name": "x",
+    "dtype": "float32",
+    "shape": [
+     1,
+     1,
+     48,
+     "w"
+    ],
+    "meaning": "a line image in grey, ink high, scaled to height 48 (width at least 8)"
+   },
+   "output": {
+    "name": "y",
+    "dtype": "float32",
+    "shape": [
+     1,
+     "t",
+     85
+    ],
+    "meaning": "logits per column (one for every 4 input columns); class 0 is the CTC blank, class k + 1 is chars[k]"
+   },
+   "sha256": "1d899db5d83ef22b2fa10cb272dc971d110f799862aca7d41da3fa1fbde2fcee",
+   "bytes": 7981257,
+   "licence": "CC BY-SA 4.0",
+   "card": {
+    "lineage": [
+     {
+      "run": "pool2",
+      "manuscript": "pool",
+      "lines_from": "seg_torch",
+      "sources": [
+       "LDII_1806",
+       "LDII_19634",
+       "LDII_4278",
+       "LDII_45364",
+       "LDII_6487",
+       "LDII_80136",
+       "LDII_82320",
+       "LDII_82668",
+       "LDII_85885",
+       "LDII_9851"
+      ]
+     },
+     {
+      "run": "pool1",
+      "manuscript": "pool",
+      "lines_from": "seg_torch",
+      "sources": [
+       "LDII_1806",
+       "LDII_19634",
+       "LDII_45364",
+       "LDII_82668",
+       "LDII_85885",
+       "LDII_9851"
+      ]
+     },
+     {
+      "run": "ft6",
+      "manuscript": "LDII_19634",
+      "lines": 685,
+      "lines_from": "seg_torch"
+     },
+     {
+      "run": "run4",
+      "manuscript": "LDII_85885",
+      "lines": 4509,
+      "lines_from": "seg_torch"
+     }
+    ],
+    "contributions": [],
+    "licence": "CC BY-SA 4.0",
+    "consent": "the developer's own manuscripts only; no contributed data"
+   }
+  },
+  "spacer": {
+   "file": "spacer.onnx",
+   "source": "sanskrit_spacer/runs/full_e10_s1/best.pt",
+   "max_diff_from_pytorch": 1.519918441772461e-05,
+   "threshold": 0.45,
+   "max_len": 256,
+   "input": {
+    "name": "x",
+    "dtype": "int64",
+    "shape": [
+     "n",
+     "L"
+    ],
+    "meaning": "letter ids: symbol i of the alphabet in spacer.json is i + 2, 1 unknown; L from 1 to 256, no padding needed (a batch of windows of different lengths is padded with 0 to the longest: padding is masked)"
+   },
+   "output": {
+    "name": "y",
+    "dtype": "float32",
+    "shape": [
+     "n",
+     "L"
+    ],
+    "meaning": "logit of a word space after each letter; those of any padding are ignored"
+   },
+   "sha256": "d46f56ae7eda84f36ad3656d8b5571421afcbdf0ab20dd152fe25cf7cfaa5dc6",
+   "bytes": 13352928,
+   "licence": "CC BY-SA 4.0",
+   "card": {
+    "texts": "Pramāṇa's open release: Sanskrit Wikisource (CC BY-SA), SARIT (CC BY-SA), Ambuda (CC0)",
+    "run": "full_e10_s1",
+    "licence": "CC BY-SA 4.0",
+    "consent": "openly licensed texts; no manuscript images"
+   }
+  }
+ },
+ "lm": {
+  "source": "data/lm/20261126",
+  "built": "2026-11-26T20:09:36",
+  "order": 6,
+  "components": [
+   {
+    "name": "lexica",
+    "file": "lexica.bin.gz",
+    "weight": 0.7,
+    "order": 6,
+    "pruned_below": 3,
+    "entries": 2070915,
+    "lines": 790200,
+    "letters": 16058865,
+    "bytes": 10290011,
+    "raw_bytes": 20306533,
+    "folder": "/Users/Shared/drdhaval2785/sanskrit-lexica-for-annotation",
+    "files": 115,
+    "sha256": "9beb78b145493aedb6067eec2cad1abef7d8836bc4e182baa74122dd9ff729a3",
+    "licence": "CC BY-SA 4.0"
+   },
+   {
+    "name": "own",
+    "file": "own.bin.gz",
+    "weight": 0.3,
+    "order": 6,
+    "pruned_below": 1,
+    "entries": 989834,
+    "lines": 5726,
+    "letters": 760827,
+    "bytes": 5198037,
+    "raw_bytes": 10565114,
+    "sources": [
+     {
+      "manuscript": "LDII_1806",
+      "kind": "corrected",
+      "lines": 68
+     },
+     {
+      "manuscript": "LDII_19634",
+      "kind": "corrected",
+      "lines": 697
+     },
+     {
+      "manuscript": "LDII_4278",
+      "kind": "corrected",
+      "lines": 44
+     },
+     {
+      "manuscript": "LDII_45364",
+      "kind": "corrected",
+      "lines": 60
+     },
+     {
+      "manuscript": "LDII_6487",
+      "kind": "corrected",
+      "lines": 60
+     },
+     {
+      "manuscript": "LDII_80136",
+      "kind": "corrected",
+      "lines": 72
+     },
+     {
+      "manuscript": "LDII_82320",
+      "kind": "corrected",
+      "lines": 60
+     },
+     {
+      "manuscript": "LDII_82668",
+      "kind": "corrected",
+      "lines": 104
+     },
+     {
+      "manuscript": "LDII_85885",
+      "kind": "transcribed",
+      "lines": 4509
+     },
+     {
+      "manuscript": "LDII_9851",
+      "kind": "corrected",
+      "lines": 52
+     }
+    ],
+    "sha256": "d278b056a6bb1e8621e20c2999b60753b213a8f0ab157d196cb49dd2abd01396",
+    "licence": "CC BY-SA 4.0"
+   }
+  ],
+  "decoding": {
+   "alpha": 0.4,
+   "beta": 1.0,
+   "beam": 16,
+   "prune": -7.0,
+   "boundary_repeat": 0.5
+  },
+  "meaning": "character n-grams over the letters of the Devanagari block (daṇḍas, digits and marks one boundary symbol), mixed by weight; lines are read by a prefix beam search over the recogniser's probabilities with pipeline.json's lm parameters (msocr/lm.py, Manuscribe's recoglm.js)"
+ },
+ "files": {
+  "pipeline.json": {
+   "sha256": "8e5e7fb8d4b6f3aaa8cebcafd4a4b93255d57fdb32ce01c8357c5e6d4f811ebd",
+   "bytes": 1929
+  },
+  "spacer.json": {
+   "sha256": "dfc05a52d5d711c491c50fbce5e35cbf5a67314c724772b9438af286dcc93991",
+   "bytes": 3628
+  },
+  "recogniser_chars.json": {
+   "sha256": "bd5ea07246fd929909d9714c6752c9de0fdd7d02f945257306d3bd79dde39c76",
+   "bytes": 585
+  }
+ },
+ "licence": "weights CC BY-SA 4.0; training data: the developer's own manuscripts and, for the spacer, CC BY-SA/CC0 texts (Pramāṇa)",
+ "needs": {
+  "runtime": "onnxruntime-web-1.31.1",
+  "pipeline_version": 2,
+  "spacer_version": 1
+ },
+ "page_height": {
+  "median": 685,
+  "p10": 608,
+  "p90": 756,
+  "pages": 2919
+ },
+ "software": {
+  "devanagari-manuscript-ocr": "0.13.2",
+  "repository": "https://github.com/drdhaval2785/devanagari-manuscript-ocr"
+ },
+ "script": "sa-Deva"
+}

@@ -16,7 +16,7 @@ browser; recognition then runs on the device, offline, and nothing is sent anywh
 
 The packs are made by [devanagari-manuscript-ocr](https://github.com/drdhaval2785/devanagari-manuscript-ocr) (`python -m msocr.export_onnx`, then
 `python -m msocr.site`); its reference pipeline in Python and Manuscribe's JavaScript are held to give the same output
-by stage fixtures. Made with devanagari-manuscript-ocr 0.13.1, for Manuscribe 0.13.1.
+by stage fixtures. Made with devanagari-manuscript-ocr 0.13.2, for Manuscribe 0.13.2.
 
 Licences: the models' weights are under CC BY-SA 4.0 (see LICENSE.md); ONNX Runtime Web under MIT
 (runtime/*/LICENSE).
