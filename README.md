@@ -16,7 +16,7 @@ browser; recognition then runs on the device, offline, and nothing is sent anywh
 
 The packs are made by [devanagari-manuscript-ocr](https://github.com/drdhaval2785/devanagari-manuscript-ocr) (`python -m msocr.export_onnx`, then
 `python -m msocr.site`); its reference pipeline in Python and Manuscribe's JavaScript are held to give the same output
-by stage fixtures. Made with devanagari-manuscript-ocr 0.13.4, for Manuscribe 0.13.4.
+by stage fixtures. Made with devanagari-manuscript-ocr 0.13.5, for Manuscribe 0.13.5.
 
 Licences: the models' weights as LICENSE.md and each pack's manifest say (from 27 November 2026 the segmenter, the
 recogniser and the language model CC BY-NC-SA 4.0, the word spacer CC BY-SA 4.0; earlier packs CC BY-SA 4.0 throughout);
