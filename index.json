@@ -2,7 +2,7 @@
  "schema": 1,
  "updated": "2026-11-28T10:44:48",
  "software": {
-  "devanagari-manuscript-ocr": "0.13.3",
+  "devanagari-manuscript-ocr": "0.13.4",
   "repository": "https://github.com/drdhaval2785/devanagari-manuscript-ocr"
  },
  "latest": "pack-20261128-p2-s1",
